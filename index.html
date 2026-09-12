@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翼博云添｜川南丘陵山区无人机助力乡村振兴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, sans-serif;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #f6f8f7;
+            min-height: 100vh;
+        }
+        /* ========= 导航栏固定置顶 ========= */
+        .header {
+            background-color: #238b50;
+            color: #fff;
+            padding: 16px 32px;
+            position: sticky;
+            top:0;
+            z-index:999;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+        .nav-wrap {
+            max-width:1200px;
+            margin:0 auto;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .logo {
+            font-size:24px;
+            font-weight:bold;
+        }
+        .nav {
+            display:flex;
+            list-style:none;
+            gap:22px;
+            align-items:center;
+        }
+        .nav a{
+            color:#fff;
+            text-decoration:none;
+            transition:0.2s;
+        }
+        .nav a:hover{
+            color:#c9f2d9;
+        }
+        .login-btn{
+            background:rgba(255,255,255,0.2);
+            padding:8px 14px;
+            border-radius:6px;
+            transition:0.2s;
+        }
+        .login-btn:hover{
+            background:rgba(255,255,255,0.35);
+        }
+        .menu-btn{
+            display:none;
+            font-size:26px;
+            cursor:pointer;
+        }
+        .banner{
+            height:80vh;
+            position:relative;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            color:#fff;
+            background:#238b50;
+            overflow:hidden;
+        }
+        .bg-gradient{
+            position:absolute;
+            inset:0;
+            background:radial-gradient(circle,rgba(35,139,80,0.75),#165832);
+        }
+        .banner-content{
+            position:relative;
+            z-index:2;
+        }
+        .banner h1{
+            font-size:56px;
+            margin-bottom:14px;
+            text-shadow:0 2px 12px rgba(0,0,0,0.15);
+        }
+        .banner h2{
+            font-size:28px;
+            font-weight:normal;
+            margin-bottom:18px;
+            opacity:0.95;
+        }
+        .banner p{
+            font-size:19px;
+            margin-bottom:36px;
+            max-width:700px;
+            margin-left:auto;
+            margin-right:auto;
+            opacity:0.9;
+        }
+        .banner-btn-group{
+            display:flex;
+            gap:18px;
+            justify-content:center;
+        }
+        .btn{
+            padding:14px 30px;
+            border-radius:10px;
+            border:none;
+            font-size:17px;
+            cursor:pointer;
+            transition:0.25s all;
+        }
+        .btn:hover{
+            transform: translateY(-3px);
+            box-shadow:0 6px 16px rgba(0,0,0,0.12);
+        }
+        .primary-btn{
+            background:#fff;
+            color:#238b50;
+            font-weight:500;
+        }
+        .outline-btn{
+            background:transparent;
+            border:1px solid #fff;
+            color:#fff;
+        }
+        .container{
+            width:90%;
+            max-width:1100px;
+            margin:0 auto;
+        }
+        .section{
+            padding:80px 0;
+        }
+        .bg-gray{
+            background:#f1f4f2;
+        }
+        .section-title{
+            text-align:center;
+            margin-bottom:50px;
+        }
+        .section-title h3{
+            font-size:30px;
+            color:#238b50;
+        }
+        .line{
+            width:70px;
+            height:3px;
+            background:#238b50;
+            margin:12px auto;
+            border-radius:3px;
+        }
+        .two-col{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:36px;
+            align-items:center;
+        }
+        .card-item{
+            background:#fff;
+            padding:28px;
+            border-radius:16px;
+            box-shadow:0 4px 16px rgba(0,0,0,0.06);
+            transition:0.25s;
+        }
+        .card-item:hover{
+            transform: translateY(-4px);
+            box-shadow:0 8px 24px rgba(35,139,80,0.08);
+        }
+        .card-title{
+            font-size:22px;
+            color:#238b50;
+            margin-bottom:16px;
+            font-weight:bold;
+        }
+        .point-list{
+            list-style:none;
+        }
+        .point-list li{
+            margin:14px 0;
+            font-size:16px;
+            line-height:1.6;
+        }
+        .card-grid{
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:24px;
+        }
+        .service-card{
+            background:#fff;
+            padding:28px;
+            border-radius:16px;
+            box-shadow:0 4px 16px rgba(0,0,0,0.06);
+            transition:0.25s;
+        }
+        .service-card:hover{
+            transform: translateY(-4px);
+            box-shadow:0 8px 24px rgba(35,139,80,0.08);
+        }
+        .icon-box{
+            font-size:40px;
+            margin-bottom:14px;
+        }
+        .tech-list{
+            margin:16px 0;
+        }
+        .tech-row{
+            display:flex;
+            justify-content:space-between;
+            padding:10px 0;
+            border-bottom:1px solid #eee;
+        }
+        .num-grid{
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:24px;
+        }
+        .num-card{
+            background:#fff;
+            padding:28px;
+            border-radius:16px;
+            text-align:center;
+            box-shadow:0 4px 16px rgba(0,0,0,0.06);
+            transition:0.25s;
+        }
+        .num-card:hover{
+            transform: translateY(-4px);
+            box-shadow:0 8px 24px rgba(35,139,80,0.08);
+        }
+        .num{
+            font-size:40px;
+            font-weight:bold;
+            color:#238b50;
+            margin:8px 0;
+        }
+        .team-grid{
+            grid-template-columns:repeat(4,1fr);
+        }
+        .team-card{
+            background:#fff;
+            padding:24px;
+            border-radius:16px;
+            text-align:center;
+            box-shadow:0 4px 16px rgba(0,0,0,0.06);
+            transition:0.25s;
+        }
+        .team-card:hover{
+            transform: translateY(-4px);
+            box-shadow:0 8px 24px rgba(35,139,80,0.08);
+        }
+        .team-avatar{
+            width:60px;
+            height:60px;
+            border-radius:50%;
+            background:#238b50;
+            color:#fff;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin:0 auto 12px;
+            font-size:24px;
+        }
+        .plan-wrap{
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+        }
+        .plan-item{
+            background:#fff;
+            padding:24px;
+            border-radius:14px;
+            transition:0.25s;
+        }
+        .plan-item:hover{
+            transform: translateY(-3px);
+            box-shadow:0 6px 20px rgba(35,139,80,0.07);
+        }
+        .plan-period{
+            font-weight:bold;
+            color:#238b50;
+            margin-bottom:10px;
+            font-size:18px;
+        }
+        .simulator-section{
+            background:#f1f4f2;
+        }
+        .sim-top-bar{
+            background:#fff;
+            border-radius:16px;
+            padding:20px;
+            margin-bottom:24px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            box-shadow:0 4px 14px rgba(0,0,0,0.05);
+        }
+        .sim-btn-group{
+            display:flex;
+            gap:12px;
+        }
+        .sim-btn{
+            padding:10px 16px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            transition:0.2s;
+        }
+        .sim-btn.active{
+            background:#238b50;
+            color:#fff;
+        }
+        .sim-page{
+            background:#fff;
+            border-radius:16px;
+            padding:24px;
+            box-shadow:0 4px 14px rgba(0,0,0,0.05);
+        }
+        .hidden{
+            display:none;
+        }
+        .sim-page-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:24px;
+        }
+        .sim-card{
+            border:1px solid #eee;
+            border-radius:14px;
+            padding:20px;
+        }
+        .sim-card-title{
+            font-size:19px;
+            font-weight:bold;
+            margin-bottom:16px;
+            color:#238b50;
+        }
+        .sim-form-grid{
+            display:grid;
+            gap:14px;
+            margin-bottom:20px;
+        }
+        .sim-form-item label{
+            display:block;
+            margin-bottom:6px;
+        }
+        .sim-form-item input,.sim-form-item select{
+            width:100%;
+            padding:10px;
+            border:1px solid #ddd;
+            border-radius:8px;
+        }
+        .sim-btn-submit{
+            width:100%;
+            padding:12px;
+            background:#238b50;
+            color:#fff;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            transition:0.2s;
+        }
+        .sim-btn-submit:hover{
+            filter:brightness(1.05);
+        }
+        .sim-stats-row{
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:18px;
+            margin-bottom:20px;
+        }
+        .sim-stat-card{
+            background:#f6f8f7;
+            padding:18px;
+            border-radius:12px;
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+        .sim-table{
+            width:100%;
+            border-collapse:collapse;
+        }
+        .sim-table th,.sim-table td{
+            border:1px solid #eee;
+            padding:12px;
+            text-align:center;
+        }
+        .sim-table th{
+            background-color:#f6f8f7;
+        }
+        .footer{
+            background:#165832;
+            color:#fff;
+            padding:50px 0;
+        }
+        .footer-wrap{
+            max-width:1100px;
+            margin:0 auto;
+            display:flex;
+            justify-content:space-between;
+        }
+        .toast{
+            position:fixed;
+            bottom:20px;
+            left:50%;
+            transform:translateX(-50%);
+            background:#333;
+            color:#fff;
+            padding:12px 24px;
+            border-radius:10px;
+            display:none;
+            z-index:9999;
+        }
+        /* ========= AI悬浮助手【和admin/farmer/pilot三端完全统一CSS】 ========= */
+        .ai-float-wrap{
+            position:fixed;
+            z-index:998;
+            bottom:30px;
+            right:30px;
+        }
+        #aiBall{
+            width:70px;height:70px;
+            border-radius:50%;
+            background:#238b50;
+            color:#fff;
+            text-align:center;
+            line-height:70px;
+            font-size:30px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.15);
+            cursor:move;
+            user-select:none;
+        }
+        #aiPanel{
+            width:380px;
+            height:520px;
+            background:#fff;
+            border-radius:14px;
+            box-shadow:0 4px 20px rgba(0,0,0,0.15);
+            overflow:hidden;
+            display:none;
+            flex-direction:column;
+            position:absolute;
+            bottom:80px;
+            right:0;
+            resize: both;
+            min-width:300px;
+            min-height:350px;
+        }
+        #aiPanel.show{
+            display:flex;
+        }
+        .ai-header{
+            background:#238b50;
+            color:white;
+            padding:12px 16px;
+            display:flex;
+            justify-content:space-between;
+            font-size:18px;
+        }
+        .ai-tab-bar{
+            display:flex;
+            gap:10px;
+            padding:12px 16px;
+        }
+        .ai-tab-bar button{
+            flex:1;
+            padding:8px;
+            border:1px solid #eee;
+            background:#f8f8f8;
+            border-radius:8px;
+            font-size:15px;
+            cursor:pointer;
+        }
+        .ai-chat-history{
+            flex:1;
+            padding:10px 16px;
+            overflow-y:auto;
+        }
+        .ai-input-area{
+            display:flex;
+            gap:8px;
+            padding:12px 16px;
+            border-top:1px solid #eee;
+        }
+        #aiInput{
+            flex:1;
+            padding:10px;
+            border:1px solid #ddd;
+            border-radius:8px;
+            font-size:15px;
+        }
+        #sendChatBtn{
+            background:#238b50;
+            color:white;
+            border:none;
+            border-radius:8px;
+            padding:0 18px;
+            cursor:pointer;
+            font-size:15px;
+        }
+        /*消息气泡，和飞手、农户、管理端完全统一*/
+        .msg-user{
+            background-color:#eef7ff;
+            padding: 9px 12px;
+            border-radius: 10px;
+            margin:5px 0;
+            max-width:90%;
+            margin-left:auto;
+            word-break:break-all;
+        }
+        .msg-ai{
+            background-color:#e8f4ea;
+            padding: 9px 12px;
+            border-radius: 10px;
+            margin:5px 0;
+            max-width:90%;
+            margin-right:auto;
+            word-break:break-all;
+        }
+        .ai-resize-handle{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:6px;
+            cursor:n-resize;
+        }
+        /* 移动端响应式 */
+        @media(max-width:900px){
+            .nav{
+                display:none;
+            }
+            .menu-btn{
+                display:block;
+            }
+            .two-col,.card-grid,.num-grid,.sim-stats-row,.sim-page-grid{
+                grid-template-columns: 1fr;
+            }
+            .banner h1{
+                font-size:38px;
+            }
+            .banner h2{
+                font-size:20px;
+            }
+            .banner p{
+                font-size:16px;
+            }
+            .footer-wrap{
+                flex-direction:column;
+                gap:20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 导航栏 -->
+<header class="header">
+    <div class="container nav-wrap">
+        <div class="logo">翼博云添</div>
+        <ul class="nav">
+            <li><a href="#about">项目介绍</a></li>
+            <li><a href="#service">核心服务</a></li>
+            <li><a href="#tech">技术产品</a></li>
+            <li><a href="#data">市场优势</a></li>
+            <li><a href="#team">团队</a></li>
+            <li><a href="#plan">发展规划</a></li>
+            <li><a href="#simulator">产品下单</a></li>
+            <li><a href="#contact">联系我们</a></li>
+            <a href="login.html" class="login-btn">登录</a>
+        </ul>
+        <div class="menu-btn" id="menuBtn">☰</div>
+    </div>
+</header>
+
+<!-- 首屏Banner -->
+<section class="banner">
+    <div class="container banner-content">
+        <h1>翼博云添</h1>
+        <h2>川南丘陵山区无人机助力乡村振兴</h2>
+        <p>低空科技赋能乡土，破解山地农业运输难、用工贵、效率低难题</p>
+        <div class="banner-btn-group">
+            <button class="btn primary-btn">了解服务</button>
+            <button class="btn outline-btn">查看商业计划</button>
+        </div>
+    </div>
+    <div class="bg-gradient"></div>
+</section>
+
+<!-- 项目介绍 -->
+<section id="about" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h3>项目介绍</h3>
+            <div class="line"></div>
+        </div>
+        <div class="two-col">
+            <div class="col-left">
+                <h4 style="font-size:22px;color:#238b50;margin-bottom:12px;">项目背景</h4>
+                <p style="line-height:1.7;margin-bottom:12px;">在国家乡村振兴与低空经济发展双重背景下，针对川南丘陵山区农业生产受地形制约突出矛盾，团队实地走访120余户农户，调研发现当地农业面临四大痛点：运输难、用工贵、效率低、监管散。</p>
+                <p style="line-height:1.7;">川南85%山地果园分布于坡度15°以上，传统农机通行不足15%；农业从业者73%为留守老人；县域飞手供需错配严重。本项目由本地高职物联网返乡学子发起，打造无人机助农综合服务。</p>
+            </div>
+            <div class="col-right">
+                <div class="card-item">
+                    <div class="card-title">四大核心痛点</div>
+                    <ul class="point-list">
+                        <li>🚚 <strong>运输难</strong>：陡坡果园，仅能人力背运，搬运成本极高</li>
+                        <li>👷 <strong>用工贵</strong>：劳动力老龄化，农事人工成本高于平原10‑30%</li>
+                        <li>⚡ <strong>效率低</strong>：人工作业慢，农药化肥浪费，出苗产量难保障</li>
+                        <li>📡 <strong>监管散</strong>：飞手零散，供需错配，违规飞行存在安全隐患</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 核心服务 -->
+<section id="service" class="section bg-gray">
+    <div class="container">
+        <div class="section-title">
+            <h3>四大核心服务</h3>
+            <div class="line"></div>
+        </div>
+        <div class="card-grid">
+            <div class="service-card">
+                <div class="icon-box">📦</div>
+                <h5 style="font-size:18px;margin-bottom:10px;color:#238b50">重载吊运服务</h5>
+                <p style="line-height:1.6;">解决柑橘、竹材下山，农资上山难题；自研弹簧卡扣吊运箱，载重可达95公斤，效率是人工15‑20倍，成本降低一半以上。</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box">💧</div>
+                <h5 style="font-size:18px;margin-bottom:10px;color:#238b50">精准植保服务</h5>
+                <p style="line-height:1.6;">农药、叶面肥喷洒作业，人药分离规避中毒风险，山地每亩12‑15元，效率远高于人工喷洒，喷洒均匀减少农药浪费。</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box">🌱</div>
+                <h5 style="font-size:18px;margin-bottom:10px;color:#238b50">智能播撒服务</h5>
+                <p style="line-height:1.6;">粮食播种、化肥撒施，播撒均匀；效率为人工作业20倍以上，缓解播种季劳动力缺口，大幅降低人力投入。</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box">🖥️</div>
+                <h5 style="font-size:18px;margin-bottom:10px;color:#238b50">数字化调度平台</h5>
+                <p style="line-height:1.6;">三端协同小程序，农户语音下单，飞手智能派单，管理端统一监管；解决农户找不到飞手，飞手接单难的供需矛盾。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 技术产品 -->
+<section id="tech" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h3>技术与产品</h3>
+            <div class="line"></div>
+        </div>
+        <div class="two-col">
+            <div class="col-left">
+                <h4 style="font-size:22px;color:#238b50;margin-bottom:12px;">自研弹簧卡扣吊运箱</h4>
+                <p style="line-height:1.7;margin-bottom:14px;">实用新型专利申报中，纯机械结构，无电机无电路板；手动关门自动锁止，按压自动开门。防水防尘免维护，模块化可扩展常温、恒温、冷藏模块，适配农产品、农资吊运。</p>
+                <h4 style="font-size:20px;color:#238b50;margin-bottom:10px;">三端协同微信小程序</h4>
+                <ul style="padding-left:20px;line-height:1.7;">
+                    <li>农户端：语音下单，适老化操作，无需打字</li>
+                    <li>飞手端：智能派单、路线规划、收益实时查看</li>
+                    <li>管理端：订单、飞手资质、定价统一管控</li>
+                </ul>
+            </div>
+            <div class="col-right">
+                <div class="card-item">
+                    <h4 style="font-size:20px;color:#238b50;margin-bottom:14px;">无人机机型梯队</h4>
+                    <div class="tech-list">
+                        <div class="tech-row"><span>T100S</span><span>重载吊运｜吊载95kg，激光雷达避障</span></div>
+                        <div class="tech-row"><span>T100</span><span>主力机型｜吊运、植保、撒播三合一</span></div>
+                        <div class="tech-row"><span>T70P</span><span>中型植保｜日作业可达800亩</span></div>
+                        <div class="tech-row"><span>T25P</span><span>小地块灵活作业，山地零散果园适配</span></div>
+                    </div>
+                    <p class="tip" style="margin-top:12px;color:#555;">全部机型纳入四川省农机购置补贴目录，享受购机补贴</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 市场数据 -->
+<section id="data" class="section bg-gray">
+    <div class="container">
+        <div class="section-title">
+            <h3>市场与模式优势</h3>
+            <div class="line"></div>
+        </div>
+        <div class="num-grid">
+            <div class="num-card">
+                <div class="num" data-num="1.3">0</div>
+                <div class="num-desc">县域潜在市场规模（亿元）</div>
+            </div>
+            <div class="num-card">
+                <div class="num" data-num="15">0</div>
+                <div class="num-desc">吊运效率为人工倍数</div>
+            </div>
+            <div class="num-card">
+                <div class="num" data-num="2‑3.5">0</div>
+                <div class="num-desc">投资回收期（年）</div>
+            </div>
+            <div class="num-card">
+                <div class="num" data-num="90‑220">0</div>
+                <div class="num-desc">单县预计年营收（万元）</div>
+            </div>
+        </div>
+        <div class="model-desc" style="margin-top:40px;text-align:center;">
+            <h4 style="font-size:20px;color:#238b50;margin-bottom:12px;">商业模式：政策赋能+合作社运营+飞手共享+平台管理</h4>
+            <p style="max-width:900px;margin:0 auto;line-height:1.7;">轻资产县域可复制模式；收入来自作业服务、定制方案、飞手培训、后期农业大数据增值服务。校企村共育飞手，解决山区飞手人才短缺。</p>
+        </div>
+    </div>
+</section>
+
+<!-- 团队 -->
+<section id="team" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h3>核心团队</h3>
+            <div class="line"></div>
+        </div>
+        <div class="card-grid team-grid">
+            <div class="team-card">
+                <div class="team-avatar">管</div>
+                <h5 style="margin-bottom:8px;font-size:17px;">项目管理组</h5>
+                <p style="font-size:15px;line-height:1.6;">物联网专业，项目统筹、方案策划、资源对接落地</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">运</div>
+                <h5 style="margin-bottom:8px;font-size:17px;">运营市场组</h5>
+                <p style="font-size:15px;line-height:1.6;">市场推广，农户对接，品牌宣传，合作渠道拓展</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">机</div>
+                <h5 style="margin-bottom:8px;font-size:17px;">硬件工程师</h5>
+                <p style="font-size:15px;line-height:1.6;">吊运箱结构设计，受力计算，样机迭代测试</p>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">软</div>
+                <h5 style="margin-bottom:8px;font-size:17px;">技术研发组</h5>
+                <p style="font-size:15px;line-height:1.6;">小程序、网页开发，调度平台迭代维护</p>
+            </div>
+        </div>
+        <p class="team-note" style="text-align:center;margin-top:24px;color:#444;">项目拥有多名高校指导老师与企业技术顾问，校企共建低空飞行器实训基地，提供飞手CAAC培训支持。</p>
+    </div>
+</section>
+
+<!-- 发展规划 -->
+<section id="plan" class="section bg-gray">
+    <div class="container">
+        <div class="section-title">
+            <h3>未来发展规划</h3>
+            <div class="line"></div>
+        </div>
+        <div class="plan-wrap">
+            <div class="plan-item">
+                <div class="plan-period">前期｜试点期（1‑2年）</div>
+                <p style="line-height:1.7;">村级试点验证商业模式闭环，完成专利申请、平台上线，积累订单，实现小幅盈利，完成核心成员CAAC飞手取证。</p>
+            </div>
+            <div class="plan-item">
+                <div class="plan-period">中期｜扩张期（3‑4年）</div>
+                <p style="line-height:1.7;">复制模式到全县域，区域合伙人拓展周边区县；扩充无人机与飞手队伍，拓展飞手培训业务，申报省级示范项目。</p>
+            </div>
+            <div class="plan-item">
+                <div class="plan-period">长期｜生态构建期（5年+）</div>
+                <p style="line-height:1.7;">覆盖川南多县区；搭建跨县运力网络；农业大数据订阅；打造山货电商品牌；规模化输出持证飞手，带动乡村就业。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========= 三端协同平台演示 ========= -->
+<section id="simulator" class="section simulator-section">
+    <div class="container">
+        <div class="section-title">
+            <h3>三端协同平台演示</h3>
+            <div class="line"></div>
+            <p style="margin-top:12px;">农户端下单、飞手接单、管理后台订单管控，三端数据实时互通</p>
+        </div>
+        <div class="sim-top-bar">
+            <div class="sim-role-info" style="display:flex;align-items:center;gap:12px;">
+                <div class="sim-avatar" style="font-size:28px;">👨‍🌾</div>
+                <div>
+                    <div class="sim-name"></div>
+                    <div class="sim-role-text" id="simRoleText">当前身份：农户用户端</div>
+                </div>
+            </div>
+            <div class="sim-btn-group">
+                <button class="sim-btn active" data-target="userPage">👨‍🌾 农户用户端</button>
+                <button class="sim-btn" data-target="pilotPage">🚁 飞手接单端</button>
+                <button class="sim-btn" data-target="adminPage">⚙️ 管理控制台</button>
+            </div>
+        </div>
+
+        <!-- 农户用户端 -->
+        <div class="sim-page" id="userPage">
+            <div class="sim-page-grid">
+                <div class="sim-panel sim-panel-left">
+                    <div class="sim-card">
+                        <div class="sim-card-title">📝 发布配送订单</div>
+                        <div class="sim-user-info" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+                            <div style="display:flex;align-items:center;gap:10px;">
+                                <div class="sim-user-avatar" style="font-size:26px;">👨‍🌾</div>
+                                <div class="sim-user-meta">
+                                    <div class="sim-user-name">农户张三</div>
+                                    <div class="sim-user-tel">138****8888</div>
+                                </div>
+                            </div>
+                            <div class="sim-weather">☀️ 25℃</div>
+                        </div>
+                        <div class="sim-alert" style="background:#e8f4ea;padding:10px;border-radius:8px;margin-bottom:16px;color:#165832;">
+                            📢 配送时间调整为 8:00-18:00，请合理安排下单时间。
+                        </div>
+                        <div class="sim-form-grid">
+                            <div class="sim-form-item">
+                                <label>物品类型</label>
+                                <select id="goodsType">
+                                    <option value="木材">木材</option>
+                                    <option value="肥料">肥料</option>
+                                    <option value="粮食">粮食</option>
+                                    <option value="瓜果">瓜果</option>
+                                </select>
+                            </div>
+                            <div class="sim-form-item">
+                                <label>出发地</label>
+                                <input type="text" id="sendAddr" placeholder="例如：周家村" value="周家村">
+                            </div>
+                            <div class="sim-form-item">
+                                <label>目的地</label>
+                                <input type="text" id="recvAddr" placeholder="例如：李家村" value="李家村">
+                            </div>
+                            <div class="sim-form-item">
+                                <label>距离(km)</label>
+                                <input type="number" id="dist" value="25">
+                            </div>
+                            <div class="sim-form-item">
+                                <label>重量(kg)</label>
+                                <input type="number" id="weight" value="5">
+                            </div>
+                        </div>
+                        <button id="submitOrderBtn" class="sim-btn-submit">
+                            🚀 提交配送订单
+                        </button>
+                    </div>
+                </div>
+                <div class="sim-panel sim-panel-right">
+                    <div class="sim-card">
+                        <div class="sim-card-title">📋 我的订单</div>
+                        <div id="userMyOrderList" class="sim-order-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 飞手接单端 -->
+        <div class="sim-page hidden" id="pilotPage">
+            <div class="sim-page-full">
+                <div class="sim-stats-row">
+                    <div class="sim-stat-card">
+                        <div class="sim-stat-icon" style="font-size:24px;">📦</div>
+                        <div class="sim-stat-info">
+                            <div class="sim-stat-num" id="pilotTodayOrder">4</div>
+                            <div class="sim-stat-label">今日订单</div>
+                        </div>
+                    </div>
+                    <div class="sim-stat-card">
+                        <div class="sim-stat-icon" style="font-size:24px;">💰</div>
+                        <div class="sim-stat-info">
+                            <div class="sim-stat-num">¥<span id="pilotTodayIncome">155</span></div>
+                            <div class="sim-stat-label">今日收入</div>
+                        </div>
+                    </div>
+                    <div class="sim-stat-card">
+                        <div class="sim-stat-icon" style="font-size:24px;">🟢</div>
+                        <div class="sim-stat-info">
+                            <div class="sim-stat-num" id="onlinePilotCount">2</div>
+                            <div class="sim-stat-label">在线飞手</div>
+                        </div>
+                    </div>
+                    <div class="sim-stat-card">
+                        <div class="sim-stat-icon" style="font-size:24px;">⏳</div>
+                        <div class="sim-stat-info">
+                            <div class="sim-stat-num" id="waitOrderNum">1</div>
+                            <div class="sim-stat-label">待接单</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sim-card">
+                    <div class="sim-card-title">🚁 订单大厅</div>
+                    <div id="pilotOrderList" class="pilot-order-grid"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 管理控制台 -->
+        <div class="sim-page hidden" id="adminPage">
+            <div class="sim-page-full">
+                <div class="sim-stats-row">
+                    <div class="sim-stat-card">
+                        <div class="sim-stat-icon" style="font-size:24px;">📊</div>
+                        <div class="sim-stat-info">
+                            <div class="sim-stat-num" id="adminTodayOrder">5</div>
+                            <div class="sim-stat-label">今日订单</div>
+                        </div>
+                    </div>
+                    <div class="sim-stat-card">
+                        <div class="sim-stat-icon" style="font-size:24px;">💵</div>
+                        <div class="sim-stat-info">
+                            <div class="sim-stat-num">¥<span id="adminTodayIncome">155</span></div>
+                            <div class="sim-stat-label">总收入</div>
+                        </div>
+                    </div>
+                    <div class="sim-stat-card">
+                        <div class="sim-stat-icon" style="font-size:24px;">👨‍🚀</div>
+                        <div class="sim-stat-info">
+                            <div class="sim-stat-num" id="adminOnlinePilot">2</div>
+                            <div class="sim-stat-label">在线飞手</div>
+                        </div>
+                    </div>
+                    <div class="sim-stat-card">
+                        <div class="sim-stat-icon" style="font-size:24px;">👥</div>
+                        <div class="sim-stat-info">
+                            <div class="sim-stat-num">4</div>
+                            <div class="sim-stat-label">注册用户</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sim-card">
+                    <div class="sim-card-title">⚙️ 订单管理</div>
+                    <div class="sim-table-wrap">
+                        <table class="sim-table">
+                            <thead>
+                                <tr>
+                                    <th>订单编号</th>
+                                    <th>物品</th>
+                                    <th>出发地</th>
+                                    <th>目的地</th>
+                                    <th>费用</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminOrderList"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 底部 -->
+<footer id="contact" class="footer">
+    <div class="container footer-wrap">
+        <div class="footer-left">
+            <h4 style="font-size:20px;margin-bottom:12px;">翼博云添团队</h4>
+          
+            <p>科技助农，反哺家乡，助力川南乡村振兴</p>
+        </div>
+        <div class="footer-right">
+            <p>联系：翼博云添项目组</p>
+            <p>©2026 翼博云添 All Right Reserved</p>
+        </div>
+    </div>
+</footer>
+
+<!-- 消息弹窗 -->
+<div id="toast" class="toast">操作提示</div>
+
+<!-- AI悬浮助手【结构完全和admin页面保持一致】 -->
+<div class="ai-float-wrap">
+    <div id="aiBall">🤖</div>
+    <div id="aiPanel">
+        <div class="ai-header">
+            <span>翼博云添AI助手</span>
+            <span class="ai-close-tip">点击圆球关闭</span>
+        </div>
+        <div class="ai-tab-bar">
+            <button id="chatItem">💬 对话咨询</button>
+            <button id="transItem">🌐 选中文本翻译英文</button>
+            <div class="ai-resize-handle"></div>
+        </div>
+        <div class="ai-chat-history" id="chatHistory"></div>
+        <div class="ai-input-area">
+            <textarea id="aiInput" placeholder="输入消息，回车发送"></textarea>
+            <button id="sendChatBtn">发送</button>
+        </div>
+    </div>
+</div>
+
+<!-- 主页面三端JS -->
+<script src="main.js"></script>
+
+<!-- AI悬浮助手逻辑，完全对齐admin/农户/飞手端，使用同一个CF Worker接口 -->
+<script>
+(function(){
+    const aiBall = document.getElementById("aiBall");
+    const aiPanel = document.getElementById("aiPanel");
+    const aiInput = document.getElementById("aiInput");
+    const chatHistory = document.getElementById("chatHistory");
+    const sendBtn = document.getElementById("sendChatBtn");
+    const transItem = document.getElementById("transItem");
+    const chatItem = document.getElementById("chatItem");
+    const resizeHandle = document.querySelector(".ai-resize-handle");
+
+    const wrap = document.querySelector(".ai-float-wrap");
+    let isDrag = false;
+    let startX,startY,originX,originY;
+
+    aiBall.addEventListener("mousedown",(e)=>{
+        const clickTime = Date.now();
+        const tempMouseUp = ()=>{
+            const cost = Date.now() - clickTime;
+            if(cost < 180 && !isDrag){
+                aiPanel.classList.toggle("show");
+            }
+            document.removeEventListener("mouseup",tempMouseUp);
+        }
+        document.addEventListener("mouseup", tempMouseUp);
+
+        isDrag = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        const rect = wrap.getBoundingClientRect();
+        originX = rect.left;
+        originY = rect.top;
+        wrap.style.bottom = "auto";
+        wrap.style.right = "auto";
+        wrap.style.left = originX + "px";
+        wrap.style.top = originY + "px";
+        e.preventDefault();
+    })
+
+    document.addEventListener("mousemove", e=>{
+        if(!isDrag) return;
+        let newX = e.clientX - startX + originX;
+        let newY = e.clientY - startY + originY;
+        const w = wrap.offsetWidth;
+        const h = wrap.offsetHeight;
+        const winW = window.innerWidth;
+        const winH = window.innerHeight;
+        newX = Math.max(0, Math.min(newX, winW - w));
+        newY = Math.max(0, Math.min(newY, winH - h));
+        wrap.style.left = newX + "px";
+        wrap.style.top = newY + "px";
+    })
+    document.addEventListener("mouseup", ()=> isDrag = false);
+
+    // ===== 面板上下缩放 =====
+    let isResize = false;
+    let resizeStartH, resizeStartY;
+    if(resizeHandle){
+        resizeHandle.addEventListener("mousedown",(e)=>{
+            e.stopPropagation();
+            isResize = true;
+            resizeStartH = aiPanel.offsetHeight;
+            resizeStartY = e.clientY;
+        })
+    }
+    document.addEventListener("mousemove",(e)=>{
+        if(!isResize) return;
+        const dh = e.clientY - resizeStartY;
+        let newH = Math.max(300, resizeStartH + dh);
+        aiPanel.style.height = newH + "px";
+    })
+    document.addEventListener("mouseup",()=>{isResize=false})
+
+    //点击页面空白关闭面板
+    document.addEventListener("click",e=>{
+        if(!wrap.contains(e.target)){
+            aiPanel.classList.remove("show");
+        }
+    })
+
+    let selectedText = "";
+    document.addEventListener("mouseup", ()=>{
+        const sel = window.getSelection().toString().trim();
+        if(sel) selectedText = sel;
+    })
+
+    //消息追加（class样式，和飞手端、管理端保持一致）
+    function appendMsg(text, type="user"){
+        const div = document.createElement("div");
+        div.className = type === "ai" ? "msg-ai" : "msg-user";
+        div.textContent = text;
+        chatHistory.appendChild(div);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    // ========= CF Worker 请求函数 和农户/飞手/admin端完全一致 =========
+    const API_URL = "https://api.wuyuwsl.asia";
+    async function sendToAI(messageText){
+        try{
+            const resp = await fetch(API_URL,{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({message: messageText})
+            })
+            if(!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            const json = await resp.json();
+            return {ok:true, result: json.choices[0].message.content};
+        }catch(err){
+            console.error("API错误",err);
+            return {ok:false, msg:err.message};
+        }
+    }
+
+    //翻译按钮
+    transItem.addEventListener("click",async ()=>{
+        if(!selectedText){
+            appendMsg("系统提示：请先在页面选中一段文字","ai");
+            return;
+        }
+        appendMsg(`正在翻译：${selectedText}`,"user");
+        const prompt = `把下面这段文字翻译成英文，只返回翻译结果：${selectedText}`;
+        const res = await sendToAI(prompt);
+        if(!res.ok){
+            appendMsg(`翻译失败：${res.msg}`,"ai");
+        }else{
+            appendMsg(`【原文】${selectedText}\n【英文】${res.result}`,"ai");
+        }
+    })
+
+    chatItem.addEventListener("click",()=>{
+        appendMsg("AI助手：你好，欢迎访问翼博云添项目官网，你可以咨询本项目介绍、业务相关问题，也可以提问各类日常问题。","ai");
+    })
+
+    function getPageVisibleText() {
+        let text = document.body.innerText;
+        return text.slice(0,6000);
+    }
+
+    //对话发送
+    async function sendMessage(){
+        const msg = aiInput.value.trim();
+        if(!msg) return;
+        appendMsg("我："+msg,"user");
+        aiInput.value = "";
+        appendMsg("AI：思考中...","ai");
+
+        const pageContent = getPageVisibleText();
+        const fullPrompt = `你是翼博云添网页内置AI助手（官网首页）。 规则： 1. 如果用户的问题和翼博云添项目、无人机助农、三端平台相关，优先参考【网页全部内容】里面的信息进行回答； 2. 如果网页里没有相关内容，你可以正常回答通用、日常、生活等其他类型问题，不要拒绝回答； 3. 回答简洁自然。
+【网页全部内容】 ${pageContent} 用户问题：${msg}`;
+
+        const res = await sendToAI(fullPrompt);
+        //移除思考中提示
+        chatHistory.lastChild.remove();
+        if(!res.ok){
+            appendMsg(`⚠️接口请求失败：${res.msg}`,"ai");
+        }else{
+            appendMsg("AI："+res.result,"ai");
+        }
+    }
+    sendBtn.addEventListener("click", sendMessage);
+    aiInput.addEventListener("keydown", e=>{
+        if(e.key === "Enter" && !e.shiftKey){
+            e.preventDefault();
+            sendMessage();
+        }
+    })
+  })();
+</script>
+</body>
+</html>
